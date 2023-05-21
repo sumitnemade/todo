@@ -119,9 +119,9 @@ OverlaySupportEntry showSimpleNotification(
               child: Container(
                   width: displayWidth(context),
                   decoration: BoxDecoration(
-                      color: background ?? Theme.of(context).accentColor,
+                      color: background ?? Theme.of(context).primaryColor,
                       border: Border.all(
-                        color: background ?? Theme.of(context).accentColor,
+                        color: background ?? Theme.of(context).primaryColor,
                       ),
                       borderRadius:
                           const BorderRadius.all(Radius.circular(15))),

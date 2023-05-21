@@ -28,8 +28,8 @@ Future<void> main() async {
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     systemNavigationBarColor: AppColors.white,
-    statusBarColor: AppColors.primary,
-    statusBarIconBrightness: Brightness.dark,
+    statusBarColor: AppColors.background,
+    statusBarIconBrightness: Brightness.light,
     systemNavigationBarIconBrightness: Brightness.dark,
   ));
   runZonedGuarded(() {

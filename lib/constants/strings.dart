@@ -3,7 +3,7 @@ class Strings {
   Strings._();
 
 
-  static String get appName => 'ToDo App';
+  static String get appName => 'ToDo';
   static String get addTask => 'Add task';
   static String get logout => 'Logout';
   static String get login => 'Login';

@@ -14,6 +14,7 @@ class CustomTextFiled extends StatelessWidget {
       this.maxLength,
       this.onTap,
       this.onFieldSubmitted,
+      this.textColor,
       this.enabled = true,
       this.readOnly = false,
       this.keyboardType = TextInputType.text})
@@ -30,6 +31,7 @@ class CustomTextFiled extends StatelessWidget {
   final ValueChanged<String>? onFieldSubmitted;
   final FormFieldValidator<String>? validator;
   final GestureTapCallback? onTap;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -42,33 +44,33 @@ class CustomTextFiled extends StatelessWidget {
       maxLength: maxLength,
       readOnly: readOnly,
       onFieldSubmitted: onFieldSubmitted,
-      style: const TextStyle(color: Colors.black),
+      style: TextStyle(color: textColor ?? Colors.black),
       decoration: InputDecoration(
         counter: const SizedBox(),
         contentPadding:
-            const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+            const EdgeInsets.symmetric(vertical: 12.0, horizontal: 0.0),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         labelText: labelText,
-        labelStyle: const TextStyle(
-            color: Color(0xff222f3e),
+        labelStyle: TextStyle(
+            color: textColor ?? const Color(0xff222f3e),
             fontWeight: FontWeight.w500,
             fontSize: 14),
-        border: OutlineInputBorder(
-          borderSide: BorderSide(
-              color: enabled ? AppColors.accent : Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-              color: enabled ? AppColors.accent : Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-              color: enabled ? AppColors.accent : Colors.grey.shade300),
-          borderRadius: BorderRadius.circular(10.0),
-        ),
+        // border: OutlineInputBorder(
+        //   borderSide: BorderSide(
+        //       color: enabled ? AppColors.accent : Colors.grey.shade300),
+        //   borderRadius: BorderRadius.circular(10.0),
+        // ),
+        // enabledBorder: OutlineInputBorder(
+        //   borderSide: BorderSide(
+        //       color: enabled ? AppColors.accent : Colors.grey.shade300),
+        //   borderRadius: BorderRadius.circular(10.0),
+        // ),
+        // focusedBorder: OutlineInputBorder(
+        //   borderSide: BorderSide(
+        //       color: enabled ? AppColors.accent : Colors.grey.shade300),
+        //   borderRadius: BorderRadius.circular(10.0),
+        // ),
       ),
       // autofocus: false,
       keyboardType: keyboardType,

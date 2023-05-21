@@ -7,8 +7,8 @@ class CustomButton extends StatefulWidget {
       {Key? key,
       required this.buttonText,
       required this.onTap,
-      this.backgroundColor = AppColors.accent,
-      this.fontSize = 15,
+      this.backgroundColor = AppColors.buttonBlue,
+      this.fontSize = 14,
       this.textColor = Colors.white})
       : super(key: key);
   final String buttonText;
@@ -54,7 +54,7 @@ class CustomButtonState extends State<CustomButton> {
                   : widget.backgroundColor,
               width: 1,
             ),
-            borderRadius: BorderRadius.circular(10)),
+            borderRadius: BorderRadius.circular(2)),
         child: _isLoading
             ? SizedBox(
                 height: 20,
@@ -64,7 +64,7 @@ class CustomButtonState extends State<CustomButton> {
                 ),
               )
             : Text(
-                widget.buttonText,
+                widget.buttonText.toUpperCase(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: widget.textColor,

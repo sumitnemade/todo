@@ -6,7 +6,7 @@ import '../utils/sizes_helpers.dart';
 class Background extends StatelessWidget {
   const Background({
     Key? key,
-    required this.children,
+    this.children,
     this.padding,
     this.title,
     this.appBar,
@@ -14,9 +14,10 @@ class Background extends StatelessWidget {
     this.floatingActionButtonOnTap,
     this.floatingActionButtonIcon,
     this.floatingActionButtonText,
+    this.body,
     this.isStopScroll = false,
   }) : super(key: key);
-  final List<Widget> children;
+  final List<Widget>? children;
   final EdgeInsetsGeometry? padding;
   final String? title;
   final PreferredSizeWidget? appBar;
@@ -25,6 +26,7 @@ class Background extends StatelessWidget {
   final VoidCallback? floatingActionButtonOnTap;
   final IconData? floatingActionButtonIcon;
   final String? floatingActionButtonText;
+  final Widget? body;
 
   @override
   Widget build(BuildContext context) {
@@ -33,40 +35,37 @@ class Background extends StatelessWidget {
       bottom: Theme.of(context).platform == TargetPlatform.android,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: backgroundColor ?? AppColors.white,
+        backgroundColor: backgroundColor ?? AppColors.background,
         appBar: appBar,
-        body: Builder(builder: (ctx) {
-          return Padding(
-            padding: padding ??
-                EdgeInsets.symmetric(horizontal: displayWidth(context) * 0.1),
-            child: ListView(
-              physics:
-                  isStopScroll ? const NeverScrollableScrollPhysics() : null,
-              children: children,
-            ),
-          );
-        }),
+        body: body ??
+            Builder(builder: (ctx) {
+              return Padding(
+                padding: padding ??
+                    EdgeInsets.symmetric(
+                        horizontal: displayWidth(context) * 0.1),
+                child: ListView(
+                  physics: isStopScroll
+                      ? const NeverScrollableScrollPhysics()
+                      : null,
+                  children: children ?? [],
+                ),
+              );
+            }),
         floatingActionButton: floatingActionButtonOnTap == null
             ? null
-            : FloatingActionButton.extended(
+            : FloatingActionButton(
                 onPressed: floatingActionButtonOnTap,
                 clipBehavior: Clip.hardEdge,
-                label: Text(
-                  floatingActionButtonText!,
-                  style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w900),
-                ),
-                backgroundColor: AppColors.accent,
-                elevation: 0.0,
+                backgroundColor: AppColors.buttonBlue,
                 hoverElevation: 8.0,
                 focusElevation: 8.0,
                 disabledElevation: 0.0,
                 highlightElevation: 8.0,
-                extendedPadding: const EdgeInsets.symmetric(horizontal: 15),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(32.0),
+                ),
+                child: Icon(
+                  floatingActionButtonIcon,
                 ),
               ),
       ),

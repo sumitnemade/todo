@@ -68,13 +68,14 @@ class AuthState extends State<Auth> with AfterLayoutMixin<Auth> {
   Widget build(BuildContext context) {
     _userState = Provider.of<UserState>(context, listen: false);
     return Background(
+      backgroundColor: AppColors.background,
       padding: EdgeInsets.zero,
       children: [
         Container(
           height: 180,
           alignment: Alignment.center,
           decoration: const BoxDecoration(
-            color: AppColors.accent,
+            color: AppColors.background,
           ),
           child: Text(
             _isLogin ? Strings.login : Strings.signup,
@@ -94,18 +95,21 @@ class AuthState extends State<Auth> with AfterLayoutMixin<Auth> {
               heightSpace(displayHeight(context) * 0.02),
               if (!_isLogin)
                 CustomTextFiled(
+                  textColor: Colors.white,
                   controller: _name,
                   labelText: Strings.name,
                   keyboardType: TextInputType.emailAddress,
                 ),
               if (!_isLogin) heightSpace(10),
               CustomTextFiled(
+                textColor: Colors.white,
                 controller: _email,
                 labelText: Strings.email,
                 keyboardType: TextInputType.emailAddress,
               ),
               heightSpace(10),
               CustomTextFiled(
+                textColor: Colors.white,
                 controller: _password,
                 labelText: Strings.pass,
               ),
@@ -140,7 +144,7 @@ class AuthState extends State<Auth> with AfterLayoutMixin<Auth> {
                   },
                   child: Text(
                     "${_isLogin ? Strings.dont : Strings.already} ${Strings.haveAcc} ${_isLogin ? Strings.signup : Strings.login}",
-                    style: const TextStyle(fontSize: 12, color: Colors.grey),
+                    style: const TextStyle(fontSize: 12, color: Colors.white),
                   )),
               heightSpace(displayHeight(context) * 0.03),
               SizedBox(
@@ -150,7 +154,7 @@ class AuthState extends State<Auth> with AfterLayoutMixin<Auth> {
                   children: [
                     const Expanded(
                       child: Divider(
-                        color: Colors.grey,
+                        color: Colors.white,
                         thickness: 1,
                         endIndent: 10,
                       ),
@@ -160,12 +164,12 @@ class AuthState extends State<Auth> with AfterLayoutMixin<Auth> {
                       style: const TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
-                        color: Colors.grey,
+                        color: Colors.white,
                       ),
                     ),
                     const Expanded(
                       child: Divider(
-                        color: Colors.grey,
+                        color: Colors.white,
                         thickness: 1,
                         indent: 10,
                       ),

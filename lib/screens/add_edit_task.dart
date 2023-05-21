@@ -5,9 +5,11 @@ import 'package:provider/provider.dart';
 import 'package:todo/constants/enums.dart';
 import 'package:todo/models/TaskModel.dart';
 import 'package:todo/services/firestore_helper.dart';
+import 'package:todo/utils/sizes_helpers.dart';
 import 'package:todo/utils/utils.dart';
 import 'package:todo/widgets/spacings.dart';
 
+import '../constants/app_colors.dart';
 import '../constants/strings.dart';
 import '../state/user_state.dart';
 import '../widgets/background.dart';
@@ -59,19 +61,23 @@ class AddTaskState extends State<AddEditTask> {
     var me = Provider.of<UserState>(context, listen: false).appUser!;
     return Background(
       appBar: AppBar(
+        backgroundColor: AppColors.background,
         title: Text(
             "${_task != null ? Strings.edit : Strings.add} ${Strings.task.toLowerCase()}"),
         centerTitle: true,
       ),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       children: [
+        heightSpace(displayHeight(context) *0.1),
         CustomTextFiled(
+          textColor: Colors.white,
           controller: _name,
           labelText: Strings.name,
           keyboardType: TextInputType.name,
         ),
         heightSpace(15),
         CustomTextFiled(
+          textColor: Colors.white,
           controller: _desc,
           labelText: Strings.desc,
           keyboardType: TextInputType.text,
@@ -79,6 +85,7 @@ class AddTaskState extends State<AddEditTask> {
         ),
         heightSpace(15),
         CustomTextFiled(
+          textColor: Colors.white,
           onTap: () async {
             _selectedDate = await Utils.showDateTimePicker(context,
                 initialDate: _selectedDate);

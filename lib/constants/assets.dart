@@ -7,4 +7,5 @@ class Assets {
   //-----------------------------PNG-------------------------------------------
 
   static const String google = "assets/images/google.png";
+  static const String background = "assets/images/background.jpg";
 }
